@@ -38,6 +38,8 @@ public:
     //general pattern matching algorithm with multi thread
     long long pattern_matching(const Schedule& schedule, int thread_count, bool clique = false);
 
+    long long pattern_matching_cuda(const Schedule& schedule, int thread_count, bool clique = false);
+
     //this function will be defined at code generation
     long long unfold_pattern_matching(const Schedule& schedule, int thread_count, bool clique = false);
 

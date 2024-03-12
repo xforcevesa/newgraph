@@ -11,7 +11,7 @@
 #include <algorithm>
 
 void test_pattern(Graph* g, const Pattern &pattern, int performance_modeling_type, int restricts_type, bool use_in_exclusion_optimize = false) {
-    int thread_num = 24;
+    int thread_num = 10;
     double t1,t2;
     
     bool is_pattern_valid;

@@ -244,6 +244,11 @@ long long Graph::pattern_matching(const Schedule& schedule, int thread_count, bo
     return global_ans / schedule.get_in_exclusion_optimize_redundancy();
 }
 
+long long Graph::pattern_matching_cuda(const Schedule &schedule, int thread_count, bool clique) {
+
+}
+
+
 void Graph::pattern_matching_aggressive_func(const Schedule& schedule, VertexSet* vertex_set, VertexSet& subtraction_set, VertexSet& tmp_set, long long& local_ans, int depth) // 3 same # or @ in comment are useful in code generation ###
 {
     int loop_set_prefix_id = schedule.get_loop_set_prefix_id(depth);// @@@
