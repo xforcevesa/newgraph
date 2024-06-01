@@ -12,11 +12,12 @@ class Graphcuda {
 public:
     static Graphcuda& getinstance();
     void init(int thread_count, Graph *graph, const Schedule& schedule);
+    long long runmajor(); // mpi uses on major thread
 
 private:
     static const int MAXTHREAD = 24, MESSAGE_SIZE = 5;
     Graph* graph;
-    int *loop_data[MAXTHREAD], comm_sz, my_rank, idlethreadcnt, threadcnt, mpi_chunk_size, omp_chunk_size;
+    int *loop_data[MAXTHREAD], comm_sz, my_rank, idlethreadcnt, threadcnt, cuda_chunk_size, cuda_block_chunk_size;
     unsigned int loop_size[MAXTHREAD], *data[MAXTHREAD];
     long long node_ans;
     double starttime;

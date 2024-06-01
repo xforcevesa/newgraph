@@ -25,8 +25,8 @@ void Graphmpi::init(int _threadcnt, Graph* _graph, const Schedule& schedule) {
         data[i] = new unsigned int[MESSAGE_SIZE];
         lock[i].test_and_set();
     }
-    const int CHUNK_CONST = 70;
-    omp_chunk_size = std::max(int((long long)(graph->v_cnt) * CHUNK_CONST / graph->e_cnt), 8);
+    constexpr int CHUNK_CONST = 70;
+    omp_chunk_size = std::max(int((long long)graph->v_cnt * CHUNK_CONST / graph->e_cnt), 8);
     mpi_chunk_size = (threadcnt - 1) * omp_chunk_size;
     skip_flag = ~schedule.get_restrict_last(1);
     printf("mpi_csize = %d, omp_csize = %d\n", mpi_chunk_size, omp_chunk_size);

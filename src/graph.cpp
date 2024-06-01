@@ -245,7 +245,7 @@ long long Graph::pattern_matching(const Schedule& schedule, int thread_count, bo
 }
 
 long long Graph::pattern_matching_cuda(const Schedule &schedule, int thread_count, bool clique) {
-
+    return 0;
 }
 
 
@@ -404,8 +404,12 @@ void Graph::pattern_matching_aggressive_func(const Schedule& schedule, VertexSet
 // ###
 long long Graph::pattern_matching_mpi(const Schedule& schedule, int thread_count, bool clique)
 {
+    // Get the Graphmpi instance
     Graphmpi &gm = Graphmpi::getinstance();
+    // Global answer
     long long global_ans = 0;
+
+    // Start multiple threads
 #pragma omp parallel num_threads(thread_count)
     {
 #pragma omp master

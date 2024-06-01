@@ -31,7 +31,6 @@ void test_pattern(Graph* g, const Pattern &pattern, int performance_modeling_typ
         printf("(%d,%d)",p.first,p.second);
     puts("");
     fflush(stdout);
-
 }
 
 int main(int argc,char *argv[]) {
@@ -59,7 +58,7 @@ int main(int argc,char *argv[]) {
     
     GetDataType(my_type, type);
 
-    if(my_type == DataType::Invalid) {
+    if(my_type == Invalid) {
         printf("Dataset not found!\n");
         return 0;
     }
@@ -73,4 +72,5 @@ int main(int argc,char *argv[]) {
     test_pattern(g, p, test_type, test_type, test_type);
     
     delete g;
+    return 0;
 }

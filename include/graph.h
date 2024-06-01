@@ -1,14 +1,14 @@
 #pragma once
 #include "schedule.h"
 #include "vertex_set.h"
-#include <assert.h>
+#include <cassert>
 
 class Graphmpi;
 class Graph {
 public:
     int v_cnt; // number of vertex
     unsigned int e_cnt; // number of edge
-    long long tri_cnt; // number of triangle
+    long long tri_cnt{}; // number of triangle
     double max_running_time = 60 * 60 * 24; // second
 
     int *edge; // edges
@@ -22,8 +22,8 @@ public:
     }
 
     ~Graph() {
-        if(edge != nullptr) delete[] edge;
-        if(vertex != nullptr) delete[] vertex;
+        delete[] edge;
+        delete[] vertex;
     }
 
     int intersection_size(int v1,int v2);
@@ -46,7 +46,7 @@ public:
     //general pattern matching algorithm with multi thread ans multi process
     long long pattern_matching_mpi(const Schedule& schedule, int thread_count, bool clique = false);
 
-    int max_degree;
+    int max_degree{};
 private:
     friend Graphmpi;
     void tc_mt(long long * global_ans);
